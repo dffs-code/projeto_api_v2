@@ -1,6 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-    const Aluno = sequelize.define('alunos', {
+    const Alunos = sequelize.define('alunos', {
         idUsuario: DataTypes.INTEGER,
         nome: DataTypes.STRING,
         idade: DataTypes.INTEGER,
@@ -12,8 +12,7 @@ module.exports = (sequelize, DataTypes) => {
         endereco: DataTypes.STRING
     }, {});
 
-    Aluno.associate = function(models) {
-        Aluno.belongsTo(models.Usuarios, {foreignKey: 'id'});
+    Alunos.associate = function(models) {
     };
-    return Aluno;
+    return Alunos;
 };
