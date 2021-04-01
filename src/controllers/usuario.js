@@ -1,4 +1,4 @@
-const database = require('../models/')
+const database = require('../models')
 const bcrypt = require('bcrypt');
 
 module.exports = {
@@ -8,7 +8,7 @@ module.exports = {
       const salt = bcrypt.genSaltSync(saltRounds);
       const usuarioCriado = await database.usuarios.create({
         email: req.body.email,
-        password: bcrypt.hashSync(req.body.password, salt)
+        senha: bcrypt.hashSync(req.body.senha, salt)
       })
       res.status(201).json(usuarioCriado)
     } catch (error) {
@@ -54,9 +54,9 @@ module.exports = {
     const salt = bcrypt.genSaltSync(saltRounds);
     await database.usuarios.update({
       email: req.body.email,
-      password: bcrypt.hashSync(req.body.password, salt),
-      isActive: req.body.isActive,
-      isTeacher: req.body.isTeacher
+      senha: bcrypt.hashSync(req.body.senha, salt),
+      isAtivo: req.body.isAtivo,
+      isProfessor: req.body.isProfessor
     }, {
       where: {
         id: req.body.id
@@ -76,7 +76,7 @@ module.exports = {
           email: req.body.email
         }
       })
-      bcrypt.compare(req.body.password, selectedUser.password, (err, result) => {
+      bcrypt.compare(req.body.senha, selectedUser.senha, (err, result) => {
         if (err) {
           res.status(400).json({
             error: err
