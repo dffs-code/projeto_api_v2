@@ -23,7 +23,7 @@ module.exports = {
     }
   },
 
-  async find(req, res) {
+  async getAll(req, res) {
     try {
       var selectedUsers = await database.usuarios.findAll();
       if (!selectedUsers) {
@@ -36,9 +36,10 @@ module.exports = {
     } catch (error) {
       res.status(500).json(error.message);
     }
+    console.log("chegou aqui")
   },
 
-  async findUm(req, res) {
+  async getOne(req, res) {
     const {
       id
     } = req.params
