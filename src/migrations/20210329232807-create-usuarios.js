@@ -46,14 +46,14 @@ module.exports = {
         allowNull: false
       },
       isProfessor: {
-        type: Sequelize.TINYINT,
+        type: Sequelize.BOOLEAN,
         allowNull: false,
-        default: 0
+        defaultValue: 0
       },
       isAtivo: {
-        type: Sequelize.TINYINT,
+        type: Sequelize.BOOLEAN,
         allowNull: false,
-        default: 1
+        defaultValue: 1
       },
       createdAt: {
         allowNull: false,

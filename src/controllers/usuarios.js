@@ -8,7 +8,14 @@ module.exports = {
       const salt = bcrypt.genSaltSync(saltRounds);
       const usuarioCriado = await database.usuarios.create({
         email: req.body.email,
-        senha: bcrypt.hashSync(req.body.senha, salt)
+        senha: bcrypt.hashSync(req.body.senha, salt),
+        nome: req.body.nome,
+        idade: req.body.idade,
+        cep: req.body.cep,
+        estado: req.body.estado,
+        cidade: req.body.cidade,
+        bairro: req.body.bairro,
+        endereco: req.body.endereco
       })
       res.status(201).json(usuarioCriado)
     } catch (error) {
@@ -18,54 +25,93 @@ module.exports = {
 
   async find(req, res) {
     try {
-      var selectedUsers
-      if (!req.body.id) {
-        selectedUsers = await database.usuarios.findAll();
-      } else {
-        selectedUsers = await database.usuarios.findByPk(req.body.id)
-      }
-
+      var selectedUsers = await database.usuarios.findAll();
       if (!selectedUsers) {
         res.status(404).json({
-          mensagem: "não existe esse user"
+          mensagem: "Não há usuários cadastrados"
         })
       } else {
         res.status(200).json(selectedUsers)
       }
     } catch (error) {
-      console.log(error);
+      res.status(500).json(error.message);
     }
   },
 
+  async findUm(req, res) {
+    const {
+      id
+    } = req.params
+    try {
+      const usuario = await database.usuarios.findOne({
+        where: {
+          id: Number(id)
+        }
+      })
+      return res.status(200).json(usuario)
+    } catch (error) {
+      res.status(400).json(error.message)
+    }
+  },
   async delete(req, res) {
-    await database.usuarios.destroy({
-      where: {
-        id: req.body.id
-      }
-    })
+    const {
+      id
+    } = req.params;
 
-    res.status(200).json({
-      mensagem: "usuário deletado: " + req.body.id
-    })
+    try {
+      await database.usuarios.destroy({
+        where: {
+          id: Number(id)
+        }
+      })
+      res.status(200).json({
+        mensagem: "Usuário Deletado: " + id
+      })
+
+    } catch (error) {
+      res.status(400).json(error.message)
+    }
+
   },
 
   async updateUser(req, res) {
+    const {
+      id
+    } = req.params;
     const saltRounds = 10;
     const salt = bcrypt.genSaltSync(saltRounds);
-    await database.usuarios.update({
-      email: req.body.email,
-      senha: bcrypt.hashSync(req.body.senha, salt),
-      isAtivo: req.body.isAtivo,
-      isProfessor: req.body.isProfessor
-    }, {
-      where: {
-        id: req.body.id
-      }
-    })
 
-    res.status(200).json({
-      mensagem: "Usuário alterado com sucesso"
-    })
+    try {
+      const retorno = await database.usuarios.update({
+        email: req.body.email,
+        senha: bcrypt.hashSync(req.body.senha, salt),
+        nome: req.body.nome,
+        idade: req.body.idade,
+        cep: req.body.cep,
+        estado: req.body.estado,
+        cidade: req.body.cidade,
+        bairro: req.body.bairro,
+        endereco: req.body.endereco,
+        isAtivo: req.body.isAtivo,
+        isProfessor: req.body.isProfessor
+      }, {
+        where: {
+          id: Number(id)
+        } 
+      })
+
+      if(retorno == 1 ){
+        res.status(200).json({
+          message: "Usuário Alterado com Sucesso"
+        })
+      }else{
+        res.status(404).json({
+          message: "Usuário não encontrado"
+        })
+      }
+    } catch (error) {
+      res.status(500).json(error.mensagem)
+    }
   },
 
   async login(req, res) {
@@ -109,5 +155,3 @@ module.exports = {
     }
   }
 }
-
-
