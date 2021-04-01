@@ -6,7 +6,7 @@ module.exports = {
     try {
       const saltRounds = 10;
       const salt = bcrypt.genSaltSync(saltRounds);
-      const usuarioCriado = await database.usuarios.create({
+      const usuarioCriado = await database.Usuarios.create({
         email: req.body.email,
         senha: bcrypt.hashSync(req.body.senha, salt),
         nome: req.body.nome,
@@ -25,7 +25,7 @@ module.exports = {
 
   async getAll(req, res) {
     try {
-      var selectedUsers = await database.usuarios.findAll();
+      var selectedUsers = await database.Usuarios.findAll();
       if (!selectedUsers) {
         res.status(404).json({
           mensagem: "Não há usuários cadastrados"
@@ -36,7 +36,6 @@ module.exports = {
     } catch (error) {
       res.status(500).json(error.message);
     }
-    console.log("chegou aqui")
   },
 
   async getOne(req, res) {
@@ -44,7 +43,7 @@ module.exports = {
       id
     } = req.params
     try {
-      const usuario = await database.usuarios.findOne({
+      const usuario = await database.Usuarios.findOne({
         where: {
           id: Number(id)
         }
@@ -60,7 +59,7 @@ module.exports = {
     } = req.params;
 
     try {
-      await database.usuarios.destroy({
+      await database.Usuarios.destroy({
         where: {
           id: Number(id)
         }
@@ -83,7 +82,7 @@ module.exports = {
     const salt = bcrypt.genSaltSync(saltRounds);
 
     try {
-      const retorno = await database.usuarios.update({
+      const retorno = await database.Usuarios.update({
         email: req.body.email,
         senha: bcrypt.hashSync(req.body.senha, salt),
         nome: req.body.nome,
@@ -118,7 +117,7 @@ module.exports = {
   async login(req, res) {
     try {
       var selectedUser;
-      selectedUser = await database.usuarios.findOne({
+      selectedUser = await database.Usuarios.findOne({
         where: {
           email: req.body.email
         }

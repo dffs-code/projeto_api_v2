@@ -3,11 +3,13 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class usuarios extends Model {
+  class Usuarios extends Model {
     static associate(models) {
+      Usuarios.hasMany(models.Professores);
+      //Usuarios.hasMany(models.Alunos);
     }
   };
-  usuarios.init({
+  Usuarios.init({
     email: DataTypes.STRING,
     senha: DataTypes.STRING,
     nome: DataTypes.STRING,
@@ -21,7 +23,7 @@ module.exports = (sequelize, DataTypes) => {
     isAtivo: DataTypes.BOOLEAN
   }, {
     sequelize,
-    modelName: 'usuarios',
+    modelName: 'Usuarios',
   });
-  return usuarios;
+  return Usuarios;
 };

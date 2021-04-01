@@ -3,15 +3,15 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class materias extends Model {
+  class Materias extends Model {
     static associate(models) {
     }
   };
-  materias.init({
+  Materias.init({
     descricao: DataTypes.STRING
   }, {
     sequelize,
-    modelName: 'materias',
+    modelName: 'Materias',
   });
-  return materias;
+  return Materias;
 };

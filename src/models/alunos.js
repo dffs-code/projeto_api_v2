@@ -6,6 +6,7 @@ module.exports = (sequelize, DataTypes) => {
     }, {});
 
     Alunos.associate = function(models) {
+        Alunos.belongsTo(models.Usuarios)
     };
     return Alunos;
 };

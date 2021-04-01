@@ -6,11 +6,12 @@ module.exports = (sequelize, DataTypes) => {
   class Professores extends Model {
     
     static associate(models) {
+      Professores.belongsTo(models.Usuarios)
       Professores.hasMany(models.Formacoes, {foreignKey: 'idProfessor'})
     }
   };
   Professores.init({
-    idUsuario: DataTypes.INTEGER,
+    UsuarioId: DataTypes.INTEGER,
     sobre: DataTypes.TEXT,
     preco: DataTypes.DOUBLE,
     modalidade: DataTypes.STRING
