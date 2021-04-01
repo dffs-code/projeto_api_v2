@@ -21,8 +21,7 @@ module.exports = {
         allowNull: false,
         references: { 
           model: 'materias',
-          key: 'id',
-          
+          key: 'id',        
         }
       },
       createdAt: {

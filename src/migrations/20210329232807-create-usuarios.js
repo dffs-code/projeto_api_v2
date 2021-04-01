@@ -17,15 +17,43 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
+      nome: {
+        type: Sequelize.STRING,
+        allowNull: false
+      },
+      idade: {
+        type: Sequelize.INTEGER,
+        allowNull: false
+      },
+      cep: {
+        type: Sequelize.STRING(11),
+        allowNull: false
+      },
+      estado: {
+        type: Sequelize.STRING,
+        allowNull: false
+      },
+      cidade: {
+        type: Sequelize.STRING,
+        allowNull: false
+      },
+      bairro: {
+        type: Sequelize.STRING,
+        allowNull: false
+      },
+      endereco: {
+        type: Sequelize.STRING,
+        allowNull: false
+      },
       isProfessor: {
-        type: Sequelize.BOOLEAN,
+        type: Sequelize.TINYINT,
         allowNull: false,
-        default: false
+        default: 0
       },
       isAtivo: {
-        type: Sequelize.BOOLEAN,
+        type: Sequelize.TINYINT,
         allowNull: false,
-        default: true
+        default: 1
       },
       createdAt: {
         allowNull: false,
