@@ -19,8 +19,14 @@ module.exports = (sequelize, DataTypes) => {
     cidade: DataTypes.STRING,
     bairro: DataTypes.STRING,
     endereco: DataTypes.STRING,
-    isProfessor: DataTypes.BOOLEAN,
-    isAtivo: DataTypes.BOOLEAN
+    isProfessor: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: '0'
+    },
+    isAtivo: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: '1'
+    }
   }, {
     sequelize,
     modelName: 'Usuarios',
