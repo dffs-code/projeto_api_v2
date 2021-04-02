@@ -9,8 +9,8 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   Materias_Professores.init({
-    idProfessor: DataTypes.INTEGER,
-    idMateria: DataTypes.INTEGER
+    ProfessorId: DataTypes.INTEGER,
+    MateriaId: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'Materias_Professores',

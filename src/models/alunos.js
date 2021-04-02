@@ -9,7 +9,6 @@ const {
     
         static associate(models) {
           Alunos.belongsTo(models.Usuarios)
-          Alunos.hasMany(models.Formacoes, {foreignKey: 'idAlunos'})
         }
       };
       Alunos.init({

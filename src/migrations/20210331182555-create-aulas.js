@@ -8,7 +8,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      idPorfessor: {
+      ProfessorId: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: { 
@@ -16,7 +16,7 @@ module.exports = {
           key: 'id'
         }
       },
-      idAluno: {
+      AlunoId: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: { 
@@ -24,7 +24,7 @@ module.exports = {
           key: 'id'
         }
       },
-      idMateria: {
+      MateriaId: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: { 
