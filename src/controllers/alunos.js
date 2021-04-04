@@ -3,6 +3,7 @@ const database = require('../models')
 module.exports = {
   async createAluno(req, res) {
     const { id } = req.params;
+    
     try {
       const alunoCriado = await database.Alunos.create({
         UsuarioId: Number(id),
