@@ -92,7 +92,8 @@ module.exports = {
         cidade: req.body.cidade,
         bairro: req.body.bairro,
         endereco: req.body.endereco,
-        isAtivo: req.body.isAtivo
+        isAtivo: req.body.isAtivo,
+        updatedAt: new Date()
       }, {
         where: {
           id: Number(id)

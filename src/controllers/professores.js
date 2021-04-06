@@ -96,7 +96,8 @@ module.exports = {
       const retorno = await database.Professores.update({
         sobre: req.body.sobre,
         preco: parseFloat(req.body.preco),
-        modalidade: req.body.modalidade
+        modalidade: req.body.modalidade,
+        updatedAt: new Date()
       }, {
         where: {
           id: Number(id)

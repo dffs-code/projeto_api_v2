@@ -93,7 +93,8 @@ module.exports = {
     } = req.params;
     try {
       const retorno = await database.Alunos.update({
-        interesses: req.body.interesses
+        interesses: req.body.interesses,
+        updatedAt: new Date()
       }, {
         where: {
           id: Number(id)
