@@ -45,11 +45,6 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false
       },
-      isProfessor: {
-        type: Sequelize.BOOLEAN,
-        allowNull: false,
-        defaultValue: 0
-      },
       isAtivo: {
         type: Sequelize.BOOLEAN,
         allowNull: false,
