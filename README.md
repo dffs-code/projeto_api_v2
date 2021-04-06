@@ -9,3 +9,20 @@ Tem como objetivo auxiliar pessoas que procurem por professores particulares reu
 
 Neste projeto, é utilizado NodeJS para o servidor, o framework ExpressJS para estruturação e roteamento da aplicação e outras dependências que podem ser encontradas no arquivo package.json.
 Para banco de dados, a tecnologia escolhida é o MySQL, por existirem muitos relacionamentos no Modelo Entidade-Relacionamento. Para realizar consultas, optou-se por utilizar o Sequelize ORM. 
+
+### Comandos 
+
+Para instalar todas as dependências:
+####`npm install`
+Para subir o servidor em localhost:
+####`npm run dev` 
+ou 
+####`yarn dev`
+Para rodar as migrations:
+####`npx sequelize-cli db:migrate`
+Para desfazer as migrations:
+####`npx sequelize-cli db:migrate:undo:all`
+Para rodar as seeders:
+####`npx sequelize-cli db:seed`
+Para desfazer as seeders:
+####`npx sequelize-cli db:seed:undo:all`
