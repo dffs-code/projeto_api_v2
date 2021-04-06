@@ -13,16 +13,16 @@ Para banco de dados, a tecnologia escolhida é o MySQL, por existirem muitos rel
 ### Comandos 
 
 Para instalar todas as dependências:
-####`npm install`
+#### `npm install`
 Para subir o servidor em localhost:
-####`npm run dev` 
+#### `npm run dev` 
 ou 
-####`yarn dev`
+#### `yarn dev`
 Para rodar as migrations:
-####`npx sequelize-cli db:migrate`
+#### `npx sequelize-cli db:migrate`
 Para desfazer as migrations:
-####`npx sequelize-cli db:migrate:undo:all`
+#### `npx sequelize-cli db:migrate:undo:all`
 Para rodar as seeders:
-####`npx sequelize-cli db:seed`
+#### `npx sequelize-cli db:seed`
 Para desfazer as seeders:
-####`npx sequelize-cli db:seed:undo:all`
+#### `npx sequelize-cli db:seed:undo:all`
