@@ -20,7 +20,7 @@ module.exports = {
         email: "user_4946136@email.com",
         senha: "1234",
         nome: "jefinho",
-        idade: 21,
+        idade: 30,
         cep: "012345",
         estado: "RJ",
         cidade: "Belford Roxo",

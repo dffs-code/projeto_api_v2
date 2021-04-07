@@ -3,6 +3,7 @@ const usuarios = require('./usuarios');
 const professores = require('./professores');
 const alunos = require('./alunos');
 const materias = require('./materias');
+const formacoes = require('./formacoes');
 
 module.exports = app => {
   app.use(
@@ -10,6 +11,7 @@ module.exports = app => {
     usuarios,
     professores,
     alunos,
-    materias
+    materias,
+    formacoes
   )
 }
