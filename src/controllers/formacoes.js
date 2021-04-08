@@ -23,12 +23,13 @@ module.exports = {
       //Include trabalha como um inner join. Neste caso: Usuarios INNER JOIN Formacoes on Usuarios.id = Formacoes.UsuarioId
       const selectedFormacoes = await database.Formacoes.findOne({
         where: {
-          id: Number(id)
+          ProfessorId: Number(id)
         },  
-        include: [{
+        include: {
           model: database.Professores
-        }]
+        }
       })
+      //console.log(selectedFormacoes)
       if (!selectedFormacoes) {
         res.status(404).json({
           mensagem: "Não há formações cadastradas"

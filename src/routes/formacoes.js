@@ -6,7 +6,10 @@ const router = Router();
 router
 .get('/formacao/:id', formacaoController.getOne)
 .get('/formacoes/all', formacaoController.getAll)
-.post('/formacao', formacaoController.createFormacao)
+.get('/formacao/professor/:id', formacaoController.getFormacaoProfessor)
+
+.post('/formacao/:id', formacaoController.createFormacao)
+
 .put('/formacao/:id', formacaoController.updateFormacao)
 .delete('/formacao/:id', formacaoController.delete)
 

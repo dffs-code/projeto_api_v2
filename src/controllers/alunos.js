@@ -29,7 +29,7 @@ module.exports = {
       })
       if (!selectedAlunos) {
         res.status(404).json({
-          mensagem: "Não há alunos cadastrados"
+          mensagem: "Não há Alunos cadastrados"
         })
       } else {
         res.status(200).json(selectedAlunos)
@@ -45,7 +45,7 @@ module.exports = {
       const selectedAlunos = await database.Alunos.findAll();
       if (!selectedAlunos) {
         res.status(404).json({
-          mensagem: "Não há alunos cadastrados"
+          mensagem: "Não há Alunos cadastrados"
         })
       } else {
         res.status(200).json(selectedAlunos)
