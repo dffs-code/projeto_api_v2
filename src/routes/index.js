@@ -8,10 +8,10 @@ const formacoes = require('./formacoes');
 module.exports = app => {
   app.use(
     express.json(),
-    usuarios,
     professores,
     alunos,
+    usuarios,
     materias,
-    formacoes
+    formacoes,
   )
 }
