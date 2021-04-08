@@ -16,7 +16,7 @@ module.exports = {
     }
   },
 
-  async getProfessorUsuario(req, res) {
+  async getPerfilProfessor(req, res) {
     const { id } = req.params
     try {
       //Include trabalha como um inner join. Neste caso: Usuarios INNER JOIN Professores on Usuarios.id = Professores.UsuarioId
@@ -25,7 +25,9 @@ module.exports = {
           id: Number(id)
         },  
         include: [{
-          model: database.Usuarios
+          model: database.Usuarios,
+        },{ 
+          model: database.Formacoes
         }]
       })
       if (!selectedProfessores) {
