@@ -16,12 +16,15 @@ module.exports = {
     }
   },
 
+
   async getProfessorUsuario(req, res) {
     const { id } = req.params;
+
     try {
       //Include trabalha como um inner join. Neste caso: Materias INNER JOIN Professores on Materias.id = Professores.UsuarioId
       const selectedProfessores = await database.Professores.findOne({
         where: {
+
           id: Number(id),
         },
         include: [
@@ -30,6 +33,7 @@ module.exports = {
           },
         ],
       });
+
       if (!selectedProfessores) {
         res.status(404).json({
           mensagem: "Não há Professores cadastrados",
