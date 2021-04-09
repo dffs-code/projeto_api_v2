@@ -1,14 +1,13 @@
-const database = require('../models')
-const bcrypt = require('bcrypt');
+const database = require('../models');
+const bcrypt = require('bcrypt'); 
+const generateHashedPassword = require('../utils/generateHashedPassword');
 
 module.exports = {
   async createUser(req, res) {
     try {
-      const saltRounds = 10;
-      const salt = bcrypt.genSaltSync(saltRounds);
       const usuarioCriado = await database.Usuarios.create({
         email: req.body.email,
-        senha: bcrypt.hashSync(req.body.senha, salt),
+        senha: generateHashedPassword(req.body.senha),
         nome: req.body.nome,
         idade: req.body.idade,
         cep: req.body.cep,
@@ -78,13 +77,12 @@ module.exports = {
     const {
       id
     } = req.params;
-    const saltRounds = 10;
-    const salt = bcrypt.genSaltSync(saltRounds);
+    
 
     try {
       const retorno = await database.Usuarios.update({
         email: req.body.email,
-        senha: bcrypt.hashSync(req.body.senha, salt),
+        senha: generateHashedPassword(req.body.senha),
         nome: req.body.nome,
         idade: req.body.idade,
         cep: req.body.cep,
