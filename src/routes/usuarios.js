@@ -16,7 +16,7 @@ router
 .get('/user/:id', userController.getOne)
 .get('/users/all', userController.getAll)
 .post('/user',apiLimiter, userController.createUser)
-.put('/user/:id', userController.updateUser)
+.put('/user/:id', apiLimiter, userController.updateUser)
 .delete('/user/:id', userController.delete)
 
 module.exports = router;
