@@ -1,12 +1,16 @@
 const database = require('../models')
 
 module.exports = {
-  async createMateria(req, res) {
+  async createAula(req, res) {
     try {
-      const materiaCriada = await database.Materias.create({
-        descricao: req.body.descricao
+      const aulaCriada = await database.Aulas.create({
+        ProfessorId: req.body.ProfessorId,
+        AlunoId: req.body.AlunoId,
+        MateriaId: req.body.MateriaId,
+        dataHoraInicio: req.body.dataHoraInicio,
+        dataHoraFim: req.body.dataHoraFim
       })
-      res.status(201).json(materiaCriada)
+      res.status(201).json(aulaCriada)
     } catch (error) {
       res.status(400).json(error.message)
     }
@@ -14,13 +18,13 @@ module.exports = {
 
   async getAll(req, res) {
     try {
-      var selectedMaterias = await database.Materias.findAll();
-      if (!selectedMaterias) {
+      var selectedAulas = await database.Aulas.findAll();
+      if (!selectedAulas) {
         res.status(404).json({
-          mensagem: "Não há matérias cadastradas"
+          mensagem: "Não há aulas cadastradas"
         })
       } else {
-        res.status(200).json(selectedMaterias)
+        res.status(200).json(selectedAulas)
       }
     } catch (error) {
       res.status(500).json(error.message);
@@ -32,12 +36,12 @@ module.exports = {
       id
     } = req.params
     try {
-      const materia = await database.Materias.findOne({
+      const aula = await database.Aulas.findOne({
         where: {
           id: Number(id)
         }
       })
-      return res.status(200).json(materia)
+      return res.status(200).json(aula)
     } catch (error) {
       res.status(400).json(error.message)
     }
@@ -48,13 +52,13 @@ module.exports = {
     } = req.params;
 
     try {
-      await database.Materias.destroy({
+      await database.Aulas.destroy({
         where: {
           id: Number(id)
         }
       })
       res.status(200).json({
-        mensagem: "Matéria Deletada: " + id
+        mensagem: "Aula Deletada: " + id
       })
 
     } catch (error) {
@@ -63,13 +67,17 @@ module.exports = {
 
   },
 
-  async updateMateria(req, res) {
+  async updateAula(req, res) {
     const {
       id
     } = req.params;
     try {
-      const retorno = await database.Materias.update({
-        descricao: req.body.descricao,
+      const retorno = await database.Aulas.update({
+        ProfessorId: req.body.ProfessorId,
+        AlunoId: req.body.AlunoId,
+        MateriaId: req.body.MateriaId,
+        dataHoraInicio: req.body.dataHoraInicio,
+        dataHoraFim: req.body.dataHoraFim,
         updatedAt: new Date()
       }, {
         where: {
@@ -79,11 +87,11 @@ module.exports = {
 
       if(retorno == 1 ){
         res.status(200).json({
-          message: "Matéria Alterada com Sucesso"
+          message: "Aula Alterada com Sucesso"
         })
       }else{
         res.status(404).json({
-          message: "Matéria não encontrado"
+          message: "Aula não encontrado"
         })
       }
     } catch (error) {
